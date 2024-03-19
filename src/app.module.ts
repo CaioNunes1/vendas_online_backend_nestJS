@@ -4,6 +4,10 @@ import { UserModule } from './user/user.module';
 //import { UserService } from './user/user.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { StateModule } from './state/entitities/state.module'; 
+import { AddressEntity } from './address/entities/address.entity';
+import { StateController } from './state/state.controller';
+import { CityModule } from './city/entities/city.module';
 
 
 @Module({
@@ -31,8 +35,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         //  e a opção para executar migrações automaticamente ao iniciar a aplicação (migrationsRun: true).
         
     }),
-    UserModule],
-  controllers: [ControllerModule],
+    UserModule,
+    StateModule,
+    CityModule,
+    AddressEntity],
+  controllers: [ControllerModule, StateController],
   providers: [],
 })
 export class AppModule {}
